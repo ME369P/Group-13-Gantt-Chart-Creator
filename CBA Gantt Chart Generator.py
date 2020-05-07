@@ -114,8 +114,9 @@ class BottomPanel(wx.Panel):
             totalcost = 0
             for item in self.chart.TaskCosts:
                 if item != "N/A":
-                    totalcost += float(item)
-            self.BudgetBox.SetItem(0,2,str(totalcost))  
+                    totalcost = totalcost + float(item)
+            if totalcost != 0:
+                self.BudgetBox.SetItem(0,2,str(totalcost))  
             
     def AddButtonOnClick(self,event):
 
@@ -127,8 +128,11 @@ class BottomPanel(wx.Panel):
             
         TaskCostBox = wx.TextEntryDialog(None,"Enter Task Cost (USD)", "Task Cost Entry")
         if TaskCostBox.ShowModal() == wx.ID_OK:
-            if TaskCostBox.GetValue() != "N/A"or "":
-                TaskCost = TaskCostBox.GetValue()
+            if TaskCostBox.GetValue() != "N/A":
+                if TaskCostBox.GetValue() != "":
+                    TaskCost = TaskCostBox.GetValue()
+                else:
+                    TaskCost = "N/A"
             else:
                 TaskCost = "N/A"
         TaskCostBox.Show()
