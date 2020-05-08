@@ -1,3 +1,7 @@
+#This is the Finished Gantt Chart Creator as Intended
+#The further capabilities code and plotly code were included as supplemental references
+
+
 import wx
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 from matplotlib.figure import Figure
